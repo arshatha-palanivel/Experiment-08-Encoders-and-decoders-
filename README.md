@@ -1,8 +1,11 @@
 # Experiment-08- Encoders-and-decoders 
-### AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+# AIM
+ To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs.
+## HARDWARE REQUIRED
+  – PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED
+   Quartus prime
+# THEORY 
 
 ## Encoders
 Binary code of N digits can be used to store 2N distinct elements of coded information. This is what encoders and decoders are used for. Encoders convert 2N lines of input into a code of N bits and Decoders decode the N bits into 2N lines.
@@ -54,43 +57,85 @@ D7 = X Y Z
 ![image](https://user-images.githubusercontent.com/36288975/171543866-5a6eace6-8683-49d7-9c4f-a7cb30ec3035.png)
 ## Figure -04 8 to 3 Decoder implementation 
 
-### Procedure
-/* write all the steps invloved */
+# PROCEDURE
+Step 1: Create module encoder and decoder.
+
+Step 2: Get inputs and outputs for encoders and decoders.
+
+Step 3: Perform "or" operation for encoder and "and" logic for decoders.
+
+Step 4: Perform RTL LOGIC and get waveform.
+
+Step-5: End the module.
 
 
 
-### PROGRAM 
-/*
+# PROGRAM 
+
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+Developed by: Arshatha P
 
+RegisterNumber: 212222230012
 
+ENCODER
+```py
+module encoder(x,y,z,d0,d1,d2,d3,d4,d5,d6,d7);
+output x,y,z;
+input d0,d1,d2,d3,d4,d5,d6,d7;
+or(x,d4,d5,d6,d7);
+or(y,d2,d3,d6,d7);
+or(z,d1,d3,d5,d7);
+endmodule
+```
+DECODER
+```py
+module deco(x,y,z,d0,d1,d2,d3,d4,d5,d6,d7);
+input x,y,z;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+wire xbar,ybar,zbar;
+not (xb0ar,x);
+not (ybar,y);
+not (zbar,z);
+and (d0,xbar,ybar,zbar);
+and (d1,ybar,ybar,z);
+and (d2,zbar,y,zbar);
+and (d3,xbar,y,z);
+and (d4,x,ybar,zbar);
+and (d5,x,ybar,z);
+and (d6,x,y,zbar);
+and (d7,x,y,z);
+endmodule
+```
 
+# RTL LOGIC  
+ENCODER :
 
+![](./EN%2001.png)
 
-### RTL LOGIC  
+DECODER :
 
-
-
-
-
-
-
+![](./DE%2001.png)
 
 ### TIMING DIGRAMS  
+ENCODER :
 
+![](./EN%2002.png)
 
+DECODER :
 
-
+![](./DE%2002.png)
 
 ### TRUTH TABLE 
+ENCODER :
+
+![](./EN%2003.png)
+
+DECODER :
+
+![](./DE%2003.png)
+
+# RESULTS 
+Thus the program to desing encoder and decoder is done.
 
 
-
-
-
-
-### RESULTS 
